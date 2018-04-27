@@ -128,7 +128,7 @@ function Train(trainName, destination, firstTrainTime, frequency) {
   console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
   // this.nextArrival = nextTrain;
-  this.nextArrival = moment(nextTrain).local().format("ddd, hA");
+  this.nextArrival = moment(nextTrain).local().format("ddd, hh:mm");
   // this.nextArrival = nextArrivalGMT.local().format('ddd, hA');
 
   
@@ -158,9 +158,7 @@ UI.prototype.addTrainToList = function(train){
     <td>${train.frequency}</td>
     <td>${train.nextArrival}</td>
     <td>${train.minutesAway}</td>
-    <td><a href="#" class="delete">X</a></td>
   `;
-
   list.appendChild(row);
 }
 
