@@ -29,12 +29,15 @@ const scheduleTbl = document.getElementById('train-list');
       firstTrainTime = childSnapshot.val().firstTrainTime;
       frequency = childSnapshot.val().frequency;
       
-      console.log(trainName);
+      // console.log(trainName);
       // Instantiate Train object
       const train = new Train(trainName, destination, firstTrainTime, frequency);
-      console.dir(train);
-      console.log(train.nextArrival);
-      console.log(train.minutesAway);
+      // console.log("child below");
+      // console.dir(childSnapshot);
+      // debugger;
+      // console.dir(train);
+      // console.log(train.nextArrival);
+      // console.log(train.minutesAway);
       // full list of items to the well
       const row = document.createElement('tr');
       
@@ -102,30 +105,30 @@ function Train(trainName, destination, firstTrainTime, frequency) {
   this.destination = destination;
   this.firstTrainTime = firstTrainTime;
   this.frequency = frequency;
-  console.log("greetings from inside constructor");
+  // console.log("greetings from inside constructor");
   // Not sure about the calculated fields
   // First Time (pushed back 1 year to make sure it comes before current time_)
   let firstTimeConverted = moment(this.firstTrainTime, "HH:mm").subtract(1, "years");
-  console.log(firstTimeConverted);
+  // console.log(firstTimeConverted);
   // Current Time
   let currentTime = moment();
-  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+  // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
   
   // Difference between the times
   let diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-  console.log("DIFFERENCE IN TIME: " + diffTime);
+  // console.log("DIFFERENCE IN TIME: " + diffTime);
 
   // Time apart (remainder)
   var tRemainder = diffTime % this.frequency;
-  console.log(tRemainder);
+  // console.log(tRemainder);
 
   // Minute Until Train
   var tMinutesTillTrain = this.frequency - tRemainder;
-  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+  // console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
   // Next Train
   var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+  // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
   // this.nextArrival = nextTrain;
   this.nextArrival = moment(nextTrain).local().format("ddd, hh:mm");
@@ -208,10 +211,10 @@ const trainName = document.getElementById('train-name-input').value,
       firstTrainTime = document.getElementById('first-train-time-input').value;
       frequency = document.getElementById('frequency-input').value;
       
-console.log(trainName);
+// console.log(trainName);
 // Instantiate Train object
 const train = new Train(trainName, destination, firstTrainTime, frequency);
-console.dir(train);
+// console.dir(train);
 
 // Instantiate UI
 const ui = new UI();
