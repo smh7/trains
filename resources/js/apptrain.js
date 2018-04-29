@@ -21,7 +21,7 @@ const scheduleTbl = document.getElementById('train-list');
 // }
 // );
 
-    // Firebase watcher + initial loader
+// Firebase watcher + initial loader
     database.ref().on("child_added", function(childSnapshot) {
       
       const trainName = childSnapshot.val().TrainName,
@@ -40,8 +40,7 @@ const scheduleTbl = document.getElementById('train-list');
       // console.log(train.minutesAway);
       // full list of items to the well
       const row = document.createElement('tr');
-      
-
+    
       row.innerHTML = `
       <tr>
       <td>${childSnapshot.val().TrainName}</td> 
